@@ -28,11 +28,24 @@ Code:
 
 };
 
+// src/components/aiCall.js
 export const visualizeCode = async (code) => {
-  const prompt = `Generate a high-level flowchart for the following JavaScript code using Mermaid syntax.
+  const prompt = `Generate a flowchart for the following JavaScript code using Mermaid syntax. Follow these rules:
+1. Use proper indentation and formatting
+2. Focus on control flow (if/else, loops, functions)
+3. Keep node text concise (max 5 words)
+4. Use standard Mermaid shapes:
+   - Start/End: rounded rectangle
+   - Functions: rectangle
+   - Conditions: diamond
+   - Input/Output: parallelogram
+5. Avoid overlapping paths
+6. Use --> for connections
+7. Add direction labels (Yes/No) for decisions
 
-Only return valid Mermaid code inside a \`\`\`mermaid code block. Do not add any explanation, introduction, or comments. The output must start and end with the \`\`\`mermaid code block and contain only Mermaid-compatible content.
+Only return valid Mermaid code inside a \`\`\`mermaid code block. 
 
 Code:\n\n${code}`;
+  
   return await geminiFlashCall(prompt);
 };
