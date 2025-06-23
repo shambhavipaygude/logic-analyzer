@@ -49,3 +49,31 @@ Code:\n\n${code}`;
   
   return await geminiFlashCall(prompt);
 };
+
+export const optimizeCode= async(code)=>{
+  const prompt = `You will be given a code snippet.
+Your task is to:
+
+1. Optimize the code to improve performance without changing its functionality.
+
+2. Identify and state the time complexity of the original code.
+
+3. Identify and state the time complexity of the optimized code.
+
+4. Provide a brief 3-4 line explanation of the key differences that led to the improvement.
+
+Format your response exactly as follows (no extra text):
+
+optimized code :
+<optimized code here>
+time complexity of original code:
+<original time complexity>
+time complexity of optimized code:
+<optimized time complexity>
+explanation:
+<brief explanation here>
+Do not include any additional commentary or greetings.
+Code:
+\n\n${code}`
+return await geminiFlashCall(prompt);
+}
