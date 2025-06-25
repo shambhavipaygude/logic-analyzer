@@ -1,55 +1,84 @@
-// src/components/codeOutput.js
 import React from "react";
-import Visualization from "./visualisation";
+import { Brain, Zap, CheckCircle } from "lucide-react";
 import CodeOptimization from "./optimization";
-import { CopyButton } from "./copyButton"
+import { CopyButton } from "./copyButton";
 
-export const CodeOutput = ({ code, explanation, visualization, optimization, isLoading }) => {
+export const CodeOutput = ({ explanation, optimization, isLoading }) => {
   return (
-    <div className="h-full overflow-y-auto">
-      <div className="p-6 space-y-6">
-        {/* Code Section */}
-        <div className="bg-gray-800 rounded-lg border border-gray-700">
-          <div className="flex items-center justify-between px-4 py-3 border-b border-gray-700">
-            <h2 className="font-semibold text-lg text-gray-200 flex items-center space-x-2">
-
-              <span>Source Code</span>
-            </h2>
-            <CopyButton text={code} />
+    <div className="code-output-container">
+      {/* Code Explanation Section */}
+      <div className="analysis-section hover-expand">
+        <div className="section-header">
+          <div className="section-title">
+            <Brain size={20} />
+            <h3>Code Explanation</h3>
           </div>
-          <div className="relative">
-            <pre className="p-4 overflow-auto max-h-60 text-sm">
-              <code className="text-gray-300 font-mono">{code}</code>
-            </pre>
+          <div className="section-actions">
+            <span className="section-badge">AI Generated</span>
+            {explanation && <CopyButton text={explanation} />}
           </div>
         </div>
 
-        {/* Explanation Section */}
-        <div className="bg-gray-800 rounded-lg border border-gray-700">
-          <div className="flex items-center justify-between px-4 py-3 border-b border-gray-700">
-            <h2 className="font-semibold text-lg text-gray-200 flex items-center space-x-2">
-              <span>Explanation</span>
-            </h2>
-            <CopyButton text={explanation} />
-          </div>
-          <div className="p-4 max-h-60 overflow-y-auto">
-            {isLoading ? (
-              <div className="flex items-center space-x-2 text-gray-400">
-                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-400"></div>
-                <span>Generating explanation...</span>
+        <div className="section-content scrollable-content">
+          {isLoading ? (
+            <div className="loading-state">
+              <div className="loading-animation">
+                <div className="loading-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
               </div>
-            ) : (
+              <div className="loading-info">
+                <h4>Analyzing your code...</h4>
+                <p>Our AI is breaking down your code into simple explanations</p>
+              </div>
+            </div>
+          ) : explanation ? (
+            <div className="explanation-content">
               <div
-                className="text-gray-300 text-sm leading-relaxed prose prose-invert max-w-none"
                 dangerouslySetInnerHTML={{ __html: explanation }}
+                className="formatted-content"
               />
-            )}
+            </div>
+          ) : (
+            <div className="empty-state">
+              <Brain size={48} />
+              <h4>Ready to analyze</h4>
+              <p>Submit your code to get a detailed explanation</p>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Optimization Section */}
+      <div className="analysis-section hover-expand">
+        <div className="section-header">
+          <div className="section-title">
+            <Zap size={20} />
+            <h3>Code Optimization</h3>
+          </div>
+          <div className="section-actions">
+            <span className="section-badge performance">Performance</span>
           </div>
         </div>
+        <div className="section-content scrollable-content">
+          <CodeOptimization optimization={optimization} isLoading={isLoading} />
+        </div>
+      </div>
 
-        <CodeOptimization optimization={optimization} isLoading={isLoading} />
-        <Visualization visualization={visualization} isLoading={isLoading} />
+      {/* Compact Pro Tips Footer */}
+      <div className="output-footer compact">
+        <div className="tips-section">
+          <CheckCircle size={14} />
+          <div className="tips-content">
+            <span className="tips-text">
+              <strong>Pro Tip</strong> Hover over sections to expand and scroll
+              through detailed analysis.
+            </span>
+          </div>
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
