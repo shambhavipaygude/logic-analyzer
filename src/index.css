@@ -13,23 +13,6 @@ body {
   overflow-x: hidden;
 }
 
-/* App Container */
-.app-container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.background-layer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.3;
-}
 
 /* Header Styles */
 .app-header {
@@ -51,28 +34,9 @@ body {
   align-items: center;
 }
 
-.logo-section {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1 rem 2rem;
-}
 
-.logo-icon {
-  width: 48px;
-  height: 48px;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
-}
 
-.header-actions {
-  display: flex;
-  gap: 1rem;
-}
+
 
 .sample-btn {
   display: flex;
@@ -166,7 +130,7 @@ body {
   margin: 0 auto;
   padding: 0 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   color: #94a3b8;
   font-size: 0.875rem;
@@ -247,6 +211,7 @@ body {
   display: flex;
   position: relative;
   background: rgba(15, 23, 42, 0.95);
+ 
 }
 
 .line-numbers {
@@ -265,19 +230,17 @@ body {
 
 .scrollable-textarea {
   flex: 1;
-  height: 24rem;
-  padding: 1.5rem;
-  background: transparent;
+  padding: 1rem;
+  height: 18rem;
+  background: #1e293b;
   border: none;
-  font-family: 'Fira Code', 'JetBrains Mono', monospace;
-  font-size: 0.875rem;
-  line-height: 1.6;
-  color: #e2e8f0;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: #f1f5f9;
   resize: none;
   overflow-y: auto;
   outline: none;
-  tab-size: 4;
-  white-space: pre;
 }
 
 .scrollable-textarea::placeholder {
@@ -334,7 +297,7 @@ body {
   background: linear-gradient(135deg, #3b82f6, #8b5cf6);
   color: white;
   border: none;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   border-radius: 12px;
   font-weight: 600;
   font-size: 1rem;
@@ -460,8 +423,7 @@ body {
 .code-input-container {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  height: 100%;
+  height: 90%;
   padding: 1.5rem;
 }
 
@@ -494,7 +456,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
 }
 
 .action-info {
@@ -741,29 +702,6 @@ body {
   padding: 1.5rem 2rem;
   background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(51, 65, 85, 0.4));
   border-top: 1px solid rgba(51, 65, 85, 0.3);
-}
-
-.tips-section {
-  display: flex;
-  gap: 1rem;
-  color: #94a3b8;
-}
-
-.tips-content h4 {
-  color: #f1f5f9;
-  margin: 0 0 0.5rem 0;
-  font-size: 0.875rem;
-}
-
-.tips-content ul {
-  margin: 0;
-  padding-left: 1rem;
-  font-size: 0.8125rem;
-  line-height: 1.5;
-}
-
-.tips-content li {
-  margin-bottom: 0.25rem;
 }
 
 /* Fixed Line Numbers - Vertical Layout */
@@ -1074,3 +1012,184 @@ body {
   transform: none;
   box-shadow: none;
 }
+
+/* Analysis Buttons */
+.analysis-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;
+  position: relative;
+}
+
+.analysis-button {
+  flex: 1;
+  background: linear-gradient(135deg, #1e293b, #334155);
+  color: #f1f5f9;
+  border: 1px solid rgba(51, 65, 85, 0.3);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.analysis-button h3 {
+  margin: 0;
+  z-index: 1;
+}
+
+.analysis-button.active {
+  flex: 1 1 100%;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  z-index: 10;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+.analysis-button.active .analysis-content {
+  display: block;
+  padding: 2rem;
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+.analysis-content {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.95);
+  color: #e2e8f0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  padding: 1rem;
+  border-radius: 12px;
+  overflow-y: auto;
+}
+
+.analysis-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.analysis-content::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+.analysis-content::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* AI Call Completion Indicator */
+.ai-call-indicator {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background: #10b981;
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.5s ease;
+}
+
+.check-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Time Complexity Comparison */
+.time-complexity-comparison {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.complexity {
+  flex: 1;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.complexity.original {
+  background: #ef4444;
+  color: white;
+}
+
+.complexity.optimized {
+  background: #10b981;
+  color: white;
+}
+
+/* Code Editor UI for Optimized Code */
+.code-editor-container {
+  background: #1e293b;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #334155;
+}
+
+.editor-header {
+  background: #334155;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #94a3b8;
+}
+
+.file-icon {
+  width: 12px;
+  height: 12px;
+  background: #3b82f6;
+  border-radius: 2px;
+}
+
+.editor-body {
+  display: flex;
+}
+
+.line-numbers {
+  background: #0f172a;
+  color: #64748b;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  padding: 1rem;
+  border-right: 1px solid #334155;
+  user-select: none;
+  text-align: right;
+}
+

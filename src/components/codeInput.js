@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Loader2, Play, Code, Sparkles } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 export const CodeInput = ({ initialCode, onSubmit, isLoading }) => {
   const [input, setInput] = useState(initialCode || "");
@@ -133,9 +133,7 @@ export const CodeInput = ({ initialCode, onSubmit, isLoading }) => {
             </>
           ) : (
             <>
-              <Sparkles size={20} />
               <span>Analyze Code</span>
-              <Play size={16} />
             </>
           )}
         </button>
