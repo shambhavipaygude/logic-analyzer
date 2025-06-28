@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+<a id="readme-top"></a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li><a href="#installation">Installation</a></li>
+    <li><a href="#usage">Usage</a></li>
+  </ol>
+</details>
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## About The Project
 
-### `npm start`
+**Logic Analyzer** allows users to input any code snippet and instantly receive a **simple explanation** of what the code is doing. For those who might not have code on hand, it also includes a **"Load Sample"** feature where the AI itself generates a beginner-friendly code sample to analyze. Not just this but it also suggests an **optimized version** of the code, and **compares the time complexity of both versions** to help users understand not just what the code does, but how efficiently it does it.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Features 
 
-### `npm test`
+- Translates complex code logic into clear, **beginner-friendly explanations**.  
+- Offers a one-click AI-generated **sample code feature** for learning or testing.
+- Provides AI-driven **optimization suggestions** for better performance. 
+- Compares the original vs optimized **time complexities** side-by-side.  
+- Built with a clean, **interactive UI** using modern web technologies.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+### Built With 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [React JS](https://react.dev/)
+- [Gemini API](https://ai.google.dev/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Installation
+1. Clone the repo
+   ```sh
+   git clone https://github.com/shambhavipaygude/logic-analyzer
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Make `.env` file and add your API credentials in it.
+   ```js
+   API_KEY = 'ENTER YOUR API KEY';
+   ```
+4. Change git remote url to avoid accidental pushes to base project
+   ```sh
+   git remote set-url origin https://github.com/shambhavipaygude/logic-analyzer
+   git remote -v 
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Usage
+1. Visit Logic Analyzer and provide a code snippet in the ‘Code Input’ section.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+  ![Step 1](<public/Picture1.png>) 
+  
+2. If you don’t have a code snippet handy, click on ‘Load Sample’ to get a sample code which will automatically be visible in input tab.
+   
+  ![Step 2](<public/Picture2.png>) 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Click on ‘Analyze Code’. You can hover over the ‘Code explanation’ or ‘Code optimization’ tabs to view the results once status check changes to ‘Analysis Complete’.
 
-## Learn More
+  ![Step 3](<public/Picture3.png>)  
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  ![Step 4](<public/Picture4.png>)  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
