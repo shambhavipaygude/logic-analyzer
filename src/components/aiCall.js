@@ -1,10 +1,27 @@
 import { geminiFlashCall } from "./gemini";
 
 export const generateSampleCode = async () => {
-  const prompt = "Generate a function as code snippet less than 10 lines. Only return the raw code with no markdown formatting, no comments, and no explanation. Do not wrap the code inside a code block or include anything else..";
-  const response = await geminiFlashCall(prompt);
+  const topics = [
+    "array operations", "string processing", "game logic",
+    "data structures and algorithms", "math utilities", "bitwise hacks", "random number generation", "sorting tricks",
+     "number theory", "geometry", "text encoding", "pattern generation"
+  ];
+  
+  const randomTopic = topics[Math.floor(Math.random() * topics.length)];
+  const randomSeed = Math.floor(Math.random() * 100000); // adds uniqueness to avoid repetition
+
+  const prompt = `
+  Generate a new and unique function related to "${randomTopic}". 
+  The function must be useful.
+  Do not repeat previously generated functions. Seed: ${randomSeed}.
+  Only return the raw code with no markdown formatting, no comments, and no explanation.
+  Do not wrap it in code blocks.
+  `;
+
+  const response = await geminiFlashCall(prompt.trim());
   return response;
 };
+
 
 export const explainCode = async (code) => {
   const prompt = `You are a helpful programming teacher for beginners.
@@ -33,12 +50,10 @@ export const optimizeCode= async(code)=>{
 Your task is to:
 
 1. Optimize the code to improve performance without changing its functionality.
-
 2. Identify and state the time complexity of the original code.
-
 3. Identify and state the time complexity of the optimized code.
 
-4. Provide a brief 3-4 line explanation of the key differences that led to the improvement.
+⚠️ IMPORTANT: Do NOT wrap your response in markdown formatting like triple backticks or "python". Just give the raw code and text.
 
 Format your response exactly as follows (no extra text):
 
@@ -50,8 +65,9 @@ time complexity of optimized code:
 <optimized time complexity>
 explanation:
 <brief explanation here>
-Do not include any additional commentary or greetings.
+
 Code:
-\n\n${code}`
+
+${code}`;
 return await geminiFlashCall(prompt);
 }
